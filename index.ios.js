@@ -3,15 +3,35 @@
  * https://github.com/facebook/react-native
  * @flow
  */
+// import { Root } from "native-base";
+// import { StackNavigator } from "react-navigation";
+// import Main from './src/container/Main.js'
+
+// const AppNavigator = StackNavigator(
+//   {
+//     Main: { screen: Main },
+//   }
+// );
+
+// export default () =>
+//   <Root>
+//     <AppNavigator />
+//   </Root>;
 
 import React, { Component } from 'react';
-import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text } from 'native-base';
+import { Container, Header, Title, Content, Footer, 
+  FooterTab, Button, Left, Right, Body, 
+  Icon, Text, Item, Input, Label} from 'native-base';
 
 import {
   AppRegistry,
   StyleSheet,
   View
 } from 'react-native';
+
+var BUTTONS = ["Option 0", "Option 1", "Option 2", "Delete", "Cancel"];
+var DESTRUCTIVE_INDEX = 3;
+var CANCEL_INDEX = 4;
 
 export default class nb extends Component {
   render() {
@@ -24,19 +44,32 @@ export default class nb extends Component {
             </Button>
           </Left>
           <Body>
-            <Title>Header</Title>
+            <Title>Love Calculator</Title>
           </Body>
           <Right />
         </Header>
-        <Content>
-          <Text>
-            This is Content Section
-          </Text>
+        <Content padder>
+          <Item rounded>
+            <Input placeholder='Enter name'/>
+          </Item>
+
+          <Item fixedLabel>
+              <Label>With</Label>
+            </Item>
+
+          <Item rounded>
+            <Input placeholder='Enter partner name'/>
+          </Item>
+
+          <Button full info iconLeft>
+            <Icon name='heart' />
+            <Text>Check Love Percentage</Text>
+          </Button>
         </Content>
         <Footer>
           <FooterTab>
             <Button full>
-              <Text>Footer</Text>
+              <Text>Provide by Farifam</Text>
             </Button>
           </FooterTab>
         </Footer>
@@ -44,24 +77,5 @@ export default class nb extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
 AppRegistry.registerComponent('nb', () => nb);
